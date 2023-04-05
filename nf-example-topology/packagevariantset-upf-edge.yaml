@@ -1,12 +1,12 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariantSet
 metadata:
-  name: nf-example-free5g-edge
+  name: nf-example-free5g-upf-edge
 spec:
   upstream:
     package:
-      repo: nephio-example-packages
-      name: nf-example-free5g-topology
+      repo: https://github.com/nephio-project/free5gc-packages
+      name: pkg-example-upf-bp
     revision: v1
   targets:
   - repositories:
