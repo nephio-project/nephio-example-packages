@@ -1,0 +1,13 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariantSet
+metadata:
+  name: nf-example-free5g-regional
+spec:
+  upstream:
+    package:
+      repo: nephio-example-packages
+      name: nf-example-free5g-topology
+    revision: v1
+  targets:
+  - repositories:
+      nephio.org/site-type: regional
