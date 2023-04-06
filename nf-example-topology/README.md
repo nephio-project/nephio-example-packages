@@ -1,4 +1,4 @@
-# cachingdns-topology
+# nf-example-topology
 
 ## Description
 An Example Network Function topology for Nephio that enables deployment of workload clusters 
