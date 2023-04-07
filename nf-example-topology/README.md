@@ -1,4 +1,4 @@
-# cachingdns-topology
+# nf-example-topology
 
 ## Description
 An Example Network Function topology for Nephio that enables deployment of workload clusters 
@@ -23,3 +23,4 @@ kpt live init nf-example-topology
 kpt live apply nf-example-topology --reconcile-timeout=2m --output=table
 ```
 Details: https://kpt.dev/reference/cli/live/
+
