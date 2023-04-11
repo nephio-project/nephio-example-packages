@@ -1,13 +1,13 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariantSet
 metadata:
-  name: nf-example-free5g-upf-edge
+  name: free5g-smf-regional
 spec:
   upstream:
     package:
       repo: https://github.com/nephio-project/free5gc-packages
-      name: pkg-example-upf-bp
+      name: pkg-example-smf-bp
     revision: v1
   targets:
   - repositories:
-      nephio.org/site-type: edge
+      nephio.org/site-type: regional
