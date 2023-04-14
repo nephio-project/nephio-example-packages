@@ -10,4 +10,6 @@ spec:
     revision: v1
   targets:
   - repositories:
-      nephio.org/site-type: edge
+      matchLabels:
+        nephio.org/site-type: edge
+        nephio.org/site-type: combined
