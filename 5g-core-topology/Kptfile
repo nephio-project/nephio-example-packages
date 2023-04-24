@@ -1,0 +1,17 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: 5g-core-topology
+  annotations:
+    config.kubernetes.io/local-config: "true"
+info:
+  description: >
+    An Example Network Function topology for Nephio that enables deployment of workload clusters
+    running the free5gc UPF, SMF, and AMF network functions.
+
+    This topology contains the package variant sets that can be specialized by the pckage variant
+    set controller. For each package variant set, the following customizations can be made:
+    - The target repositories specified explicitly or using match labels
+    - Other configuration to be added via configuration injection
+
+    See https://github.com/GoogleContainerTools/kpt/blob/main/docs/design-docs/08-package-variant.md for more information.
