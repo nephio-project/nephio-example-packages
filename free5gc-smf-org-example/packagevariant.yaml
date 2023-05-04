@@ -1,0 +1,20 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: free5g-smf-regional
+spec:
+  upstream:
+    repo: free5gc-packages
+    package: pkg-example-smf-bp
+    revision: v1
+  downstream:
+    repo: org-nf-catalog
+    package: free5gc-smf
+  labels:
+    'example.com/vendor': free5gc
+    'example.com/package-content': network-function
+    'example.com/nf-type': smf
+    'example.com/contact': "nf-platform-team@example.com"
+  packageContext:
+    data:
+      contact-email: "nf-platform-team@example.com"
