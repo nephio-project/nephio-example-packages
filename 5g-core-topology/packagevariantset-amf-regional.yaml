@@ -1,15 +1,14 @@
-apiVersion: config.porch.kpt.dev/v1alpha1
+apiVersion: config.porch.kpt.dev/v1alpha2
 kind: PackageVariantSet
 metadata:
   name: free5g-amf-regional
 spec:
   upstream:
-    package:
-      repo: https://github.com/nephio-project/free5gc-packages
-      name: pkg-example-amf-bp
+    repo: free5gc-packages
+    package: pkg-example-amf-bp
     revision: v1
   targets:
-  - repositories:
+  - repositorySelector:
       matchExpressions:
       - key: nephio.org/site-type
         operator: In
