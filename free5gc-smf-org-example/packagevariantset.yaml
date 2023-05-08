@@ -1,0 +1,17 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariantSet
+metadata:
+  name: free5g-smf-regional
+spec:
+  upstream:
+    package:
+      repo: free5gc-packages
+      name: pkg-example-smf-bp
+      ref: 1.0
+  targets:
+  - package:
+      repo: workload-cluster1
+      name: free5gc-large-smf
+  - package:
+      repo: workload-cluster2
+      name: free5gc-large-smf
