@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gitea-ssh
+  namespace: gitea
+spec:
+  selector:
+    app: gitea
+  ports:
+  - name: gitea-ssh
+    port: 22
