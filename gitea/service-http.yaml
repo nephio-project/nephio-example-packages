@@ -9,4 +9,3 @@ spec:
   ports:
   - name: gitea-http
     port: 3000
-
