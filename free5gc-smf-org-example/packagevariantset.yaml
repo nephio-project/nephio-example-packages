@@ -28,7 +28,6 @@ spec:
       - foo-01
       - foo-02
       - foo-03
-      name: cluster-02
     template:
       downstream:
         packageExpr: "packageName + '-' + repository.labels['env']"
