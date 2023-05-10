@@ -5,4 +5,4 @@ metadata:
   annotations:
     config.kubernetes.io/local-config: "true"
 info:
-  description: package to deploy a kind cluster using capi
+  description: This provides a blueprint manifest to deploy a kind cluster using cluster api
