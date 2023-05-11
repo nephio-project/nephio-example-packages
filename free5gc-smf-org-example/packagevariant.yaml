@@ -15,6 +15,21 @@ spec:
     'example.com/package-content': network-function
     'example.com/nf-type': smf
     'example.com/contact': "nf-platform-team@example.com"
+  annotations:
+    'example.com/vendor': free5gc
+    'example.com/package-content': network-function
   packageContext:
     data:
       contact-email: "nf-platform-team@example.com"
+    removeKeys: 
+      - free5gc
+      - smf
+  adoptionPolicy: "adoptExisting"
+  deletionPolicy: "adoptNone"
+  injectors:
+    group: free5gc-packages
+    version: v1
+    kind: free5gc
+    name: free5g-smf-regional
+  
+  
