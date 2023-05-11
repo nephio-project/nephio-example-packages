@@ -2405,7 +2405,7 @@ spec:
       - args:
         - --leader-elect
         - --metrics-bind-addr=localhost:8080
-        - --feature-gates=MachinePool=false,ClusterTopology=false
+        - --feature-gates=MachinePool=false,ClusterTopology=true
         env:
         - name: POD_NAMESPACE
           valueFrom:
