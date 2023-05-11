@@ -38,10 +38,6 @@ spec:
     template:
       labels:
         foo: bar
-          #      injectors:
-          #        group: infra.bigco.com
-          #        kind: Endpoints
-          #        nameExpr: "repository.labels['region'] + '-endpoints'"
   - objectSelector:
       apiVersion: hr.bigco.com/v1
       kind: Team
