@@ -34,6 +34,7 @@ rules:
   - porch.kpt.dev
   resources:
   - packagerevisions
+  - packagerevisionresources
   verbs:
   - create
   - delete
