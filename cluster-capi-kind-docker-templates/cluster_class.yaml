@@ -1,7 +1,7 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: ClusterClass
 metadata:
-  name: nephio
+  name: docker
   namespace: default
 spec:
   controlPlane:
@@ -9,16 +9,16 @@ spec:
       ref:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: DockerMachineTemplate
-        name: nephio-control-plane
+        name: docker-control-plane
     ref:
       apiVersion: controlplane.cluster.x-k8s.io/v1beta1
       kind: KubeadmControlPlaneTemplate
-      name: nephio-control-plane
+      name: docker-control-plane
   infrastructure:
     ref:
       apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
       kind: DockerClusterTemplate
-      name: nephio-cluster
+      name: docker-cluster
   patches:
   - definitions:
     - jsonPatches:
@@ -64,7 +64,7 @@ spec:
         matchResources:
           machineDeploymentClass:
             names:
-            - default-worker
+            - docker-default-worker
     description: |
       Sets the cgroupDriver to cgroupfs if a Kubernetes version < v1.24 is referenced.
       This is required because kind and the node images do not support the default
@@ -113,7 +113,7 @@ spec:
         matchResources:
           machineDeploymentClass:
             names:
-            - default-worker
+            - docker-default-worker
     - jsonPatches:
       - op: add
         path: /spec/template/spec/customImage
@@ -126,7 +126,7 @@ spec:
         matchResources:
           controlPlane: true
     description: Sets the container image that is used for running dockerMachines
-      for the controlPlane and default-worker machineDeployments.
+      for the controlPlane and docker-default-worker machineDeployments.
     name: customImage
   - definitions:
     - jsonPatches:
@@ -228,15 +228,15 @@ spec:
         type: object
   workers:
     machineDeployments:
-    - class: default-worker
+    - class: docker-default-worker
       template:
         bootstrap:
           ref:
             apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
             kind: KubeadmConfigTemplate
-            name: nephio-default-worker-bootstraptemplate
+            name: docker-default-worker-bootstraptemplate
         infrastructure:
           ref:
             apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
             kind: DockerMachineTemplate
-            name: nephio-default-worker-machinetemplate
+            name: docker-default-worker-machinetemplate

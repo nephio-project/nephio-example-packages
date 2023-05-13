@@ -1,7 +1,7 @@
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: DockerMachineTemplate
 metadata:
-  name: nephio-control-plane
+  name: docker-default-worker-machinetemplate
   namespace: default
 spec:
   template:
