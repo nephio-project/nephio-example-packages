@@ -30,7 +30,7 @@ spec:
       - foo-03
     template:
       downstream:
-        packageExpr: "packageName + '-' + repository.labels['env']"
+        packageExpr: "target.package"
   - repositorySelector:
       matchLabels:
         env: prod
