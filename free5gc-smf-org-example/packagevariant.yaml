@@ -15,6 +15,30 @@ spec:
     'example.com/package-content': network-function
     'example.com/nf-type': smf
     'example.com/contact': "nf-platform-team@example.com"
+  annotations:
+    'example.com/vendor': free5gc
+    'example.com/package-content': network-function
   packageContext:
     data:
       contact-email: "nf-platform-team@example.com"
+    removeKeys: 
+      - free5gc
+      - smf
+  adoptionPolicy: "adoptExisting"
+  deletionPolicy: "adoptNone"
+  pipeline: 
+    validators:
+      - image: gcr.io/kpt-fn/kubeval:v0.3
+    mutators:
+      - image: gcr.io/kpt-fn/set-labels:v0.1
+        configPath: testConfig
+        name: smf
+        configMap:
+          env: dev
+  injectors:
+    group: free5gc-packages
+    version: v1
+    kind: free5gc
+    name: free5g-smf-regional
+  
+  
