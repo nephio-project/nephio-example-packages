@@ -1,7 +1,7 @@
 apiVersion: controlplane.cluster.x-k8s.io/v1beta1
 kind: KubeadmControlPlaneTemplate
 metadata:
-  name: nephio-control-plane
+  name: docker-control-plane
   namespace: default
 spec:
   template:

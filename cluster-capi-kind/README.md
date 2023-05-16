@@ -2,7 +2,7 @@
 
 ## Description
 
-This package provides a blueprint manifest to deploy a kind cluster using cluster api
+This package provides a blueprint for deploying a capi cluster using the capi kind docker templates
 
 The package contains some defaults but can be changed through the kpt pipeline
 - pod cidrBlocks: 192.168.0.0/16
@@ -10,7 +10,3 @@ The package contains some defaults but can be changed through the kpt pipeline
 - service domain: cluster.local
 - kubernetes version: v1.26.3
 - workers: 3
-
-The package has some host dependencies:
-- /opt/cni/bin for accessing the cni(s)
-- /var/run/docker.sock for the docker socket
