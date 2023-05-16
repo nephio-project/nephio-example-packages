@@ -33,8 +33,19 @@ rules:
 - apiGroups:
   - porch.kpt.dev
   resources:
-  - packagerevisions
   - packagerevisionresources
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - porch.kpt.dev
+  resources:
+  - packagerevisions
   verbs:
   - create
   - delete
