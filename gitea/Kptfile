@@ -5,4 +5,4 @@ metadata:
   annotations:
     config.kubernetes.io/local-config: "true"
 info:
-  description: Gitea package to deploy a gitea server
+  description: Gitea package to deploy a gitea server in a gitea namespace
