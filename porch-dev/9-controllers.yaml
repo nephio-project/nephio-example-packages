@@ -40,7 +40,7 @@ spec:
       containers:
       - name: porch-controllers
         # Update to the image of your porch-controllers build.
-        image: nephio/porch-controllers:pre-release-18-4
+        image: nephio/porch-controllers:pre-release-18-5
         env:
         - name: ENABLE_PACKAGEVARIANTSETS
           value: "true"
