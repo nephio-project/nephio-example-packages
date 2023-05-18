@@ -43,7 +43,7 @@ spec:
       containers:
         - name: porch-server
           # Update image to the image of your porch apiserver build.
-          image: nephio/porch-server:pre-release-18-5
+          image: nephio/porch-server:v0.0.18
           imagePullPolicy: IfNotPresent
           resources:
             requests:
