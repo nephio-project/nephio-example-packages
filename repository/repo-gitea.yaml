@@ -1,0 +1,8 @@
+apiVersion: infra.nephio.org/v1alpha1
+kind: Repository
+metadata:
+  name: example-cluster-name
+  namespace: default
+spec:
+  description: example-cluster-name repository
+  defaultBranch: main
