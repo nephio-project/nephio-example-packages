@@ -1,0 +1,13 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata: 
+  name: example-cluster-name
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
+  git:
+    repo: http://172.18.0.200:3000/nephio/example-cluster-name.git
+    branch: main
+    auth: token
+    secretRef:
+      name: example-cluster-name-access-token-configsync
