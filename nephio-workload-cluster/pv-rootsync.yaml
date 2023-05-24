@@ -4,9 +4,9 @@ metadata:
   name: example-rootsync
 spec:
   upstream:
-    package: nephio-rootsync
-    repo: blueprint-manifests
-    revision: main
+    package: rootsync
+    repo: nephio-example-packages
+    revision: v1
   downstream:
     package: example-rootsync
     repo: mgmt-staging

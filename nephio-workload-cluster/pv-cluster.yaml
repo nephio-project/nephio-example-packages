@@ -4,9 +4,9 @@ metadata:
   name: example-cluster
 spec:
   upstream:
-    package: nephio-cluster-capi-kind
-    repo: blueprint-manifests
-    revision: main
+    package: cluster-capi-kind
+    repo: nephio-example-packages
+    revision: v1
   downstream:
     package: example-cluster
     repo: mgmt

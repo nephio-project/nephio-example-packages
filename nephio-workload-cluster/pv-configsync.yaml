@@ -4,9 +4,9 @@ metadata:
   name: example-configsync
 spec:
   upstream:
-    package: nephio-configsync
-    repo: blueprint-manifests
-    revision: main
+    package: configsync
+    repo: nephio-example-packages
+    revision: v1
   downstream:
     package: example-configsync
     repo: mgmt-staging

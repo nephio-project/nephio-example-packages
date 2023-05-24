@@ -4,9 +4,9 @@ metadata:
   name: example-repo
 spec:
   upstream:
-    package: nephio-repo
-    repo: blueprint-manifests
-    revision: main
+    package: repo
+    repo: nephio-example-packages
+    revision: v1
   downstream:
     package: example-repo
     repo: mgmt
