@@ -1,0 +1,15 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: Repository
+metadata:
+  name: example-cluster-name
+  namespace: default
+spec:
+  content: Package
+  deployment: true
+  git:
+    branch: main
+    directory: /
+    repo: http://172.18.0.200:3000/nephio/example-cluster-name.git
+    secretRef:
+      name: example-cluster-name-access-token-porch
+  type: git
