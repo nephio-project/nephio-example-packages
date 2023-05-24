@@ -11,5 +11,5 @@ cluster repo (one for the cluster and one for the repository) and two additional
 to the management staging repo (one for configsync and one for rootsync).
 The names of those packages will be based on the name of the cluster-name. So, if this package
 is cloned to the name "cluster-01", it will deploy two additional packages,
-"cluster-01-nephio-workload-cluster", "cluster-01-repo", "cluster-01-rootsync" and "cluster-01-configsync"
+"cluster-01-cluster", "cluster-01-repo", "cluster-01-rootsync" and "cluster-01-configsync"
 
