@@ -1,0 +1,15 @@
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+kind: KubeadmConfigTemplate
+metadata: # kpt-merge: default/docker-default-worker-bootstraptemplate
+  name: docker-default-worker-bootstraptemplate
+  namespace: default
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'bootstrap.cluster.x-k8s.io|KubeadmConfigTemplate|default|docker-default-worker-bootstraptemplate'
+spec:
+  template:
+    spec:
+      joinConfiguration:
+        nodeRegistration:
+          criSocket: unix:///var/run/containerd/containerd.sock
+          kubeletExtraArgs:
+            eviction-hard: nodefs.available<0%,nodefs.inodesFree<0%,imagefs.available<0%

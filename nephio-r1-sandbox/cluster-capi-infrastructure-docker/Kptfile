@@ -1,0 +1,22 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: cluster-capi-infrastructure-docker
+  annotations:
+    config.kubernetes.io/local-config: "true"
+upstream:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/nephio-example-packages
+    directory: /cluster-capi-infrastructure-docker
+    ref: cluster-capi-infrastructure-docker/v1
+  updateStrategy: resource-merge
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/nephio-example-packages
+    directory: /cluster-capi-infrastructure-docker
+    ref: cluster-capi-infrastructure-docker/v1
+    commit: 3c2fc2a655f0362fa26ed1fa179f01d6bb1dd84d
+info:
+  description: cluster-api docker provider package

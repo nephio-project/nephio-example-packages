@@ -1,0 +1,58 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata: # kpt-merge: /porch-controllers-packagevariants
+  creationTimestamp: null
+  name: porch-controllers-packagevariants
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|ClusterRole|default|porch-controllers-packagevariants'
+rules:
+- apiGroups:
+  - config.porch.kpt.dev
+  resources:
+  - packagevariants
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - config.porch.kpt.dev
+  resources:
+  - packagevariants/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - config.porch.kpt.dev
+  resources:
+  - packagevariants/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - porch.kpt.dev
+  resources:
+  - packagerevisionresources
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - porch.kpt.dev
+  resources:
+  - packagerevisions
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch

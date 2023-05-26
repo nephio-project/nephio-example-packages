@@ -1,0 +1,24 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: nephio-webui
+  annotations:
+    config.kubernetes.io/local-config: "true"
+upstream:
+  type: git
+  git:
+    repo: https://github.com/johnbelamaric/nephio-packages
+    directory: /nephio-webui
+    ref: pv-pvs-viewers
+  updateStrategy: resource-merge
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/johnbelamaric/nephio-packages
+    directory: /nephio-webui
+    ref: pv-pvs-viewers
+    commit: 1d62e102fd086ef478fa0d2198ffb68372472e33
+info:
+  site: https://nephio.org
+  description: Package for the Nephio Web UI.
+pipeline: {}

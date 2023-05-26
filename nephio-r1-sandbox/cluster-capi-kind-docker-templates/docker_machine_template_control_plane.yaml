@@ -1,0 +1,15 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: DockerMachineTemplate
+metadata: # kpt-merge: default/docker-control-plane
+  name: docker-control-plane
+  namespace: default
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'infrastructure.cluster.x-k8s.io|DockerMachineTemplate|default|docker-control-plane'
+spec:
+  template:
+    spec:
+      extraMounts:
+      - containerPath: /var/run/docker.sock
+        hostPath: /var/run/docker.sock
+      - containerPath: /opt/cni/bin
+        hostPath: /opt/cni/bin

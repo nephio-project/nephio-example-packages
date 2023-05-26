@@ -1,0 +1,8 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: nephio-r1-sandbox
+  annotations:
+    config.kubernetes.io/local-config: "true"
+info:
+  description: Packages for the Nephio management cluster sandbox environment

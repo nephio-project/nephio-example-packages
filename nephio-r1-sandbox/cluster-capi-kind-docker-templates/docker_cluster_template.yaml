@@ -1,0 +1,10 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: DockerClusterTemplate
+metadata: # kpt-merge: default/docker-cluster
+  name: docker-cluster
+  namespace: default
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'infrastructure.cluster.x-k8s.io|DockerClusterTemplate|default|docker-cluster'
+spec:
+  template:
+    spec: {}

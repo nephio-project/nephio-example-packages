@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: # kpt-merge: nephio-webui/nephio-webui
+  name: nephio-webui
+  namespace: nephio-webui
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'apps|Deployment|nephio-webui|nephio-webui'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nephio-webui
+  template:
+    metadata:
+      labels:
+        app: nephio-webui
+    spec:
+      serviceAccountName: nephio-webui-sa
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: main
+        image: nephio/kpt-backstage-plugins:1661717771710369792
+        imagePullPolicy: Always
+        args:
+        - "--config"
+        - /etc/config/app-config.nephio.yaml
+        ports:
+        - name: http
+          containerPort: 7007
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 7007
+      volumes:
+      - name: config-volume
+        configMap:
+          name: nephio-webui-config

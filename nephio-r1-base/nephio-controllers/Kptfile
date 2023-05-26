@@ -1,0 +1,22 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: nephio-controllers
+  annotations:
+    config.kubernetes.io/local-config: "true"
+upstream:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/nephio-example-packages
+    directory: /nephio-controllers
+    ref: nephio-controllers/v1
+  updateStrategy: resource-merge
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/nephio-example-packages
+    directory: /nephio-controllers
+    ref: nephio-controllers/v1
+    commit: db1ce6c1a207991fafbb65e996e1130763759e20
+info:
+  description: nephio controller
