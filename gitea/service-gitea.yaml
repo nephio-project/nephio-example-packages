@@ -11,7 +11,6 @@ metadata:
     metallb.universe.tf/loadBalancerIPs: 172.18.0.200
 spec:
   type: LoadBalancer
-  clusterIP: None
   ports:
   - name: ssh
     port: 22
