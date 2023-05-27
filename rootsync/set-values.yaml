@@ -10,11 +10,11 @@ source: |-
   def set_values(resources):
     for r in resources:
       if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "kptfile.kpt.dev"):
-        clusterName = r["data"].get("clusterName", "default")
         name = r["data"]["name"]
+        clusterName = r["data"].get("clusterName", name)
     for r in resources:
       if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "localconfig"):
-        clusterName = r["data"].get("clusterName", "default")
+        clusterName = r["data"].get("clusterName", name)
         name = r["data"]["name"]
     for r in resources:
       if krmfn.match_gvk(r, "configsync.gke.io/v1beta1", "RootSync"):
