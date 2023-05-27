@@ -6,7 +6,7 @@ spec:
   upstream:
     package: rootsync
     repo: nephio-example-packages
-    revision: v1
+    revision: v2
   downstream:
     package: example-rootsync
     repo: mgmt-staging

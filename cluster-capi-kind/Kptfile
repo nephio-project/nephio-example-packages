@@ -6,3 +6,7 @@ metadata:
     config.kubernetes.io/local-config: "true"
 info:
   description: This package provides a blueprint for deploying a capi cluster using the capi kind docker templates
+pipeline:
+  mutators:
+  - image: gcr.io/kpt-fn/starlark:v0.4.3
+    configPath: set-values.yaml
