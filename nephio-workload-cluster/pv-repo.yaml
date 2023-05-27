@@ -6,7 +6,7 @@ spec:
   upstream:
     package: repository
     repo: nephio-example-packages
-    revision: v1
+    revision: v2
   downstream:
     package: example-repo
     repo: mgmt
