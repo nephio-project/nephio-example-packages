@@ -1,0 +1,16 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: Repository
+metadata:
+  name: nephio-example-packages
+  namespace: default
+  labels:
+    kpt.dev/repository-access: read-only
+    kpt.dev/repository-content: external-blueprints
+spec:
+  content: Package
+  deployment: false
+  git:
+    branch: main
+    directory: /
+    repo: https://github.com/nephio-project/nephio-example-packages.git
+  type: git
