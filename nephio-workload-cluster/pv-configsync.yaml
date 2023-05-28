@@ -3,6 +3,8 @@ kind: PackageVariant
 metadata:
   name: example-configsync
 spec:
+  annotations:
+    approval.nephio.org/policy: initial
   upstream:
     package: configsync
     repo: nephio-example-packages

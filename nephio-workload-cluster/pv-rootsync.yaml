@@ -3,6 +3,8 @@ kind: PackageVariant
 metadata:
   name: example-rootsync
 spec:
+  annotations:
+    approval.nephio.org/policy: initial
   upstream:
     package: rootsync
     repo: nephio-example-packages
