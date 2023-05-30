@@ -11233,7 +11233,7 @@ spec:
       - args:
         - --leader-elect
         - --metrics-bind-addr=localhost:8080
-        - --feature-gates=MachinePool=false,ClusterResourceSet=false,ClusterTopology=false,RuntimeSDK=false,LazyRestmapper=false
+        - --feature-gates=MachinePool=false,ClusterResourceSet=false,ClusterTopology=true,RuntimeSDK=false,LazyRestmapper=false
         command:
         - /manager
         env:

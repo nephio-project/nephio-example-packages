@@ -6663,7 +6663,7 @@ spec:
       - args:
         - --leader-elect
         - --metrics-bind-addr=localhost:8080
-        - --feature-gates=ClusterTopology=false,KubeadmBootstrapFormatIgnition=false,LazyRestmapper=false
+        - --feature-gates=ClusterTopology=true,KubeadmBootstrapFormatIgnition=false,LazyRestmapper=false
         command:
         - /manager
         env:
