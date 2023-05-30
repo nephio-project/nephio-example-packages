@@ -15,7 +15,7 @@ rules:
 - apiGroups:
   - porch.kpt.dev
   resources:
-  - packagerevisionresources/status
+  - packagerevisions
   - packagerevisions/status
   - packagerevisions/approval
   verbs:
