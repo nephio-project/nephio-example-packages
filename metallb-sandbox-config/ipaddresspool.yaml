@@ -1,0 +1,8 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: nephio
+  namespace: metallb-system
+spec:
+  addresses:
+  - 172.18.0.0/20
