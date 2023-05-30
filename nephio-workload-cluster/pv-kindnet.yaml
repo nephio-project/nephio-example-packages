@@ -1,0 +1,20 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: example-kindnet
+spec:
+  upstream:
+    package: kindnet
+    repo: nephio-example-packages
+    revision: v1
+  downstream:
+    package: example-kindnet
+    repo: mgmt-staging
+  packageContext:
+    data:
+      clusterName: example
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/set-annotations:v0.1.4
+      configMap:
+        nephio.org/cluster-name: example
