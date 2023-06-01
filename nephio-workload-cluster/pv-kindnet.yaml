@@ -12,9 +12,6 @@ spec:
   downstream:
     package: example-kindnet
     repo: mgmt-staging
-  packageContext:
-    data:
-      clusterName: example
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/set-annotations:v0.1.4
