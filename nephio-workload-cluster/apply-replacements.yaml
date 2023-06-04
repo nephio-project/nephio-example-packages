@@ -15,9 +15,16 @@ replacements:
     fieldPaths:
     - metadata.name
     - spec.downstream.package
-    - spec.packageContext.data.clusterName
-    - spec.pipeline.mutators.[image=gcr.io/kpt-fn/set-annotations:v0.1.4].configMap.[nephio.org/cluster-name]
     options:
       delimiter: '-'
       index: 0
-      create: true
+  - select:
+      kind: PackageVariant
+    fieldPaths:
+    - spec.injectors.[kind=WorkloadCluster].name
+    - spec.pipeline.mutators.[image=gcr.io/kpt-fn/set-annotations:v0.1.4].configMap.[nephio.org/cluster-name]
+  - select:
+      kind: WorkloadCluster
+    fieldPaths:
+    - metadata.name
+    - spec.clusterName

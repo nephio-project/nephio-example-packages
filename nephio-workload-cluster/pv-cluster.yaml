@@ -5,16 +5,17 @@ metadata:
 spec:
   annotations:
     approval.nephio.org/policy: initial
+    approval.nephio.org/delay: 2m
   upstream:
     package: cluster-capi-kind
     repo: nephio-example-packages
-    revision: v3
+    revision: v4
   downstream:
     package: example-cluster
     repo: mgmt
-  packageContext:
-    data:
-      clusterName: example
+  injectors:
+  - kind: WorkloadCluster
+    name: example
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/set-annotations:v0.1.4

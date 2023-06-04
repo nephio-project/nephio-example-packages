@@ -8,14 +8,15 @@ metadata: # kpt-merge: /generate-values
 source: |-
   load("krmfn.star", "krmfn")
   def set_values(resources):
+    # this package can be cloned manually and used without injection; in that case base
+    # the repository name on the package name
     for r in resources:
       if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "kptfile.kpt.dev"):
-        name = r["data"]["name"]
-        clusterName = r["data"].get("clusterName", name)
+        clusterName = r["data"]["name"]
+    # if a WorkloadCluster exists, and was injected, then use that for the name
     for r in resources:
-      if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "localconfig"):
-        clusterName = r["data"].get("clusterName", name)
-        name = r["data"]["name"]
+      if krmfn.match_gvk(r, "infra.nephio.org/v1alpha1", "WorkloadCluster") and "annotations" in r["metadata"] and "kpt.dev/injected-resource" in r["metadata"]["annotations"]:
+        clusterName = r["spec"]["clusterName"]
     for r in resources:
       if krmfn.match_gvk(r, "configsync.gke.io/v1beta1", "RootSync"):
         r["metadata"]["name"] = clusterName

@@ -5,16 +5,17 @@ metadata:
 spec:
   annotations:
     approval.nephio.org/policy: initial
+    approval.nephio.org/delay: 2m
   upstream:
     package: rootsync
     repo: nephio-example-packages
-    revision: v2
+    revision: v3
   downstream:
     package: example-rootsync
     repo: mgmt-staging
-  packageContext:
-    data:
-      clusterName: example
+  injectors:
+  - kind: WorkloadCluster
+    name: example
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/set-annotations:v0.1.4

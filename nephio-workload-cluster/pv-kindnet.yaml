@@ -5,6 +5,7 @@ metadata:
 spec:
   annotations:
     approval.nephio.org/policy: initial
+    approval.nephio.org/delay: 2m
   upstream:
     package: kindnet
     repo: nephio-example-packages
@@ -12,9 +13,6 @@ spec:
   downstream:
     package: example-kindnet
     repo: mgmt-staging
-  packageContext:
-    data:
-      clusterName: example
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/set-annotations:v0.1.4
