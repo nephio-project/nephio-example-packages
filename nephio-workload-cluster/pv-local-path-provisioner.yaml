@@ -1,0 +1,21 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: example-local-path-provisioner
+spec:
+  annotations:
+    approval.nephio.org/policy: initial
+    approval.nephio.org/delay: 2m
+  upstream:
+    package: local-path-provisioner
+    repo: nephio-example-packages
+    revision: v1
+  downstream:
+    package: example-local-path-provisioner
+    repo: mgmt-staging
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/set-annotations:v0.1.4
+      configMap:
+        nephio.org/cluster-name: example
+
