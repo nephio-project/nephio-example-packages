@@ -6,3 +6,4 @@ metadata:
     config.kubernetes.io/local-config: "true"
 info:
   description: Package for local-path-provisioner storage class. 
+
