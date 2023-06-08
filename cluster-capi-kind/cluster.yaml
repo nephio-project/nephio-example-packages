@@ -35,4 +35,4 @@ spec:
       machineDeployments:
       - class: docker-default-worker
         name: md-0
-        replicas: 3
+        replicas: 1
