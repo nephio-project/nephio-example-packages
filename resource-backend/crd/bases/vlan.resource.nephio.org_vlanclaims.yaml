@@ -4,17 +4,17 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.9.2
   creationTimestamp: null
-  name: vlanallocations.vlan.alloc.nephio.org
+  name: vlanclaims.vlan.resource.nephio.org
 spec:
-  group: vlan.alloc.nephio.org
+  group: vlan.resource.nephio.org
   names:
     categories:
     - nephio
-    - alloc
-    kind: VLANAllocation
-    listKind: VLANAllocationList
-    plural: vlanallocations
-    singular: vlanallocation
+    - resource
+    kind: VLANClaim
+    listKind: VLANClaimList
+    plural: vlanclaims
+    singular: vlanclaim
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
@@ -36,7 +36,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: VLANAllocation is the Schema for the vlan allocations API
+        description: VLANClaim is the Schema for the vlan claim API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
@@ -47,7 +47,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: VLANAllocationSpec defines the desired state of VLANAllocation
+            description: VLANClaimSpec defines the desired state of VLANClaim
             properties:
               labels:
                 additionalProperties:
@@ -55,10 +55,10 @@ spec:
                 description: Labels as user defined labels
                 type: object
               range:
-                description: VLANRange defines the vlan range for the VLAN allocation
+                description: VLANRange defines the vlan range for the VLAN claim
                 type: string
               selector:
-                description: Selector defines the selector criterias for the VLAN allocation
+                description: Selector defines the selector criterias for the VLAN claim
                 properties:
                   matchExpressions:
                     description: matchExpressions is a list of label selector requirements. The requirements are ANDed.
@@ -89,7 +89,7 @@ spec:
                 type: object
                 x-kubernetes-map-type: atomic
               vlanDatabase:
-                description: VLANDatabase defines the vlan database contexts for the VLAN Allocation
+                description: VLANIndex defines the vlan index for the VLAN Claim
                 properties:
                   apiVersion:
                     description: API version of the referent.
@@ -115,13 +115,13 @@ spec:
                 type: object
                 x-kubernetes-map-type: atomic
               vlanID:
-                description: VLANID defines the vlan for the VLAN allocation
+                description: VLANID defines the vlan for the VLAN claim
                 type: integer
             required:
             - vlanDatabase
             type: object
           status:
-            description: VLANAllocationStatus defines the observed state of VLANAllocation
+            description: VLANClaimStatus defines the observed state of VLANClaim
             properties:
               conditions:
                 description: Conditions of the resource.
@@ -167,13 +167,13 @@ spec:
                   type: object
                 type: array
               expiryTime:
-                description: ExpiryTime indicated when the allocation expires
+                description: ExpiryTime indicated when the claim expires
                 type: string
               vlanID:
-                description: VLANID defines the vlan ID, allocated by the VLAN backend
+                description: VLANID defines the vlan ID, claimed through the VLAN backend
                 type: integer
               vlanRange:
-                description: VLANRange defines the vlan range, allocated by the VLAN backend
+                description: VLANRange defines the vlan range, claimed through the VLAN backend
                 type: string
             type: object
         type: object
