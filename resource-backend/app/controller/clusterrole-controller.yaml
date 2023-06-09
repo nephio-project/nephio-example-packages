@@ -26,10 +26,29 @@ rules:
   - create
   - delete
 - apiGroups:
-  - ipam.alloc.nephio.org
+  - inv.nephio.org
   resources:
-  - ipallocations
-  - ipallocations/status
+  - endpoints
+  - endpoints/status
+  - links
+  - links/status
+  - nodes
+  - nodes/status
+  - targets
+  - targets/status
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+  - create
+  - delete
+- apiGroups:
+  - ipam.resource.nephio.org
+  resources:
+  - ipclaims
+  - ipclaims/status
   - ipprefixes
   - ipprefixes/status
   - networkinstances
@@ -43,12 +62,25 @@ rules:
   - create
   - delete
 - apiGroups:
-  - vlan.alloc.nephio.org
+  - topo.nephio.org
   resources:
-  - vlanallocations
-  - vlanallocations/status
-  - vlandatabases
-  - vlandatabases/status
+  - rawtopologies
+  - rawtopologies/status
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+  - create
+  - delete
+- apiGroups:
+  - vlan.resource.nephio.org
+  resources:
+  - vlanclaims
+  - vlanclaims/status
+  - vlanindices
+  - vlanindices/status
   - vlans
   - vlans/status
   verbs:

@@ -4,17 +4,17 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.9.2
   creationTimestamp: null
-  name: vlandatabases.vlan.alloc.nephio.org
+  name: vlanindices.vlan.resource.nephio.org
 spec:
-  group: vlan.alloc.nephio.org
+  group: vlan.resource.nephio.org
   names:
     categories:
     - nephio
-    - alloc
-    kind: VLANDatabase
-    listKind: VLANDatabaseList
-    plural: vlandatabases
-    singular: vlandatabase
+    - resource
+    kind: VLANIndex
+    listKind: VLANIndexList
+    plural: vlanindices
+    singular: vlanindex
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
@@ -30,7 +30,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: VLANDatabase is the Schema for the vlan database API
+        description: VLANIndex is the Schema for the vlan database API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
@@ -41,25 +41,16 @@ spec:
           metadata:
             type: object
           spec:
-            description: VLANDatabaseSpec defines the desired state of VLANDatabase
+            description: VLANIndexSpec defines the desired state of VLANDatabase
             properties:
-              kind:
-                default: esg
-                description: 'Kind defines the kind of vlan database we want to create esg kind is used for ethernet segment groups device kind is used for devices: vlan per device or vlan per interface'
-                enum:
-                - esg
-                - device
-                type: string
               labels:
                 additionalProperties:
                   type: string
                 description: Labels as user defined labels
                 type: object
-            required:
-            - kind
             type: object
           status:
-            description: VLANDatabaseStatus defines the observed state of VLANDatabase
+            description: VLANIndexStatus defines the observed state of VLANDatabase
             properties:
               conditions:
                 description: Conditions of the resource.

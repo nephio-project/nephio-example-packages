@@ -4,51 +4,27 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.9.2
   creationTimestamp: null
-  name: networkinstances.ipam.alloc.nephio.org
+  name: links.inv.nephio.org
 spec:
-  group: ipam.alloc.nephio.org
+  group: inv.nephio.org
   names:
     categories:
     - nephio
-    - alloc
-    kind: NetworkInstance
-    listKind: NetworkInstanceList
-    plural: networkinstances
-    singular: networkinstance
+    - inv
+    kind: Link
+    listKind: LinkList
+    plural: links
+    singular: link
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
-    - jsonPath: .status.conditions[?(@.type=='Synced')].status
-      name: SYNC
-      type: string
     - jsonPath: .status.conditions[?(@.type=='Ready')].status
-      name: STATUS
+      name: READY
       type: string
-    - jsonPath: .metadata.name
-      name: NETWORK-INSTANCE
-      type: string
-    - jsonPath: .spec.prefixes[0].prefix
-      name: PREFIX0
-      type: string
-    - jsonPath: .spec.prefixes[1].prefix
-      name: PREFIX1
-      type: string
-    - jsonPath: .spec.prefixes[2].prefix
-      name: PREFIX2
-      type: string
-    - jsonPath: .spec.prefixes[3].prefix
-      name: PREFIX3
-      type: string
-    - jsonPath: .spec.prefixes[4].prefix
-      name: PREFIX4
-      type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: AGE
-      type: date
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: NetworkInstance is the Schema for the networkinstances API
+        description: Link is the Schema for the vlan API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
@@ -59,48 +35,69 @@ spec:
           metadata:
             type: object
           spec:
-            description: NetworkInstanceSpec defines the desired state of NetworkInstance
+            description: LinkSpec defines the desired state of Link
             properties:
-              prefixes:
-                description: Prefixes define the aggregate prefixes for the network instance A Network instance needs at least 1 prefix to be defined to become operational
+              endpoints:
+                description: Endpoints define the node + interface endpoints associated with this link
                 items:
                   properties:
-                    labels:
-                      additionalProperties:
-                        type: string
-                      description: Labels as user defined labels
-                      type: object
-                    prefix:
-                      description: Prefix defines the ip cidr in prefix notation.
-                      pattern: (([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))|((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))
+                    interfaceName:
+                      type: string
+                    nodeName:
                       type: string
                   required:
-                  - prefix
+                  - interfaceName
+                  - nodeName
                   type: object
+                maxItems: 2
+                minItems: 2
                 type: array
+              labels:
+                additionalProperties:
+                  type: string
+                description: Labels as user defined labels
+                type: object
+              lacp:
+                description: Lacp defines if the lag enabled LACP
+                type: boolean
+              lag:
+                description: lag defines if the link is a lag mutually exclusive with LagMember parameter
+                type: boolean
+              lagMember:
+                description: LagMember defines if the link is part of a lag mutually exclusive with Lag parameter
+                type: boolean
+              parametersRef:
+                description: ParametersRef points to the vendor or implementation specific params for the network.
+                properties:
+                  apiVersion:
+                    description: API version of the referent.
+                    type: string
+                  fieldPath:
+                    description: 'If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.'
+                    type: string
+                  kind:
+                    description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                    type: string
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                    type: string
+                  namespace:
+                    description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                    type: string
+                  resourceVersion:
+                    description: 'Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                    type: string
+                  uid:
+                    description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                    type: string
+                type: object
+                x-kubernetes-map-type: atomic
             required:
-            - prefixes
+            - endpoints
             type: object
           status:
-            description: NetworkInstanceStatus defines the observed state of NetworkInstance
+            description: LinkStatus defines the observed state of Link
             properties:
-              allocatedPrefixes:
-                description: Prefixes defines the prefixes, allocated by the IPAM backend
-                items:
-                  properties:
-                    labels:
-                      additionalProperties:
-                        type: string
-                      description: Labels as user defined labels
-                      type: object
-                    prefix:
-                      description: Prefix defines the ip cidr in prefix notation.
-                      pattern: (([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))|((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))
-                      type: string
-                  required:
-                  - prefix
-                  type: object
-                type: array
               conditions:
                 description: Conditions of the resource.
                 items:
