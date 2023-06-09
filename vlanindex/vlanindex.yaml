@@ -1,0 +1,6 @@
+apiVersion: vlan.resource.nephio.org/v1alpha1
+kind: VLANIndex
+metadata:
+  name: example-cluster-name
+  namespace: default
+spec:
