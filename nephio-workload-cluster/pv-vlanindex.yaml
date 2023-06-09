@@ -9,7 +9,7 @@ spec:
   upstream:
     package: vlanindex
     repo: nephio-example-packages
-    revision: v3
+    revision: v1
   downstream:
     package: example-repo
     repo: mgmt
