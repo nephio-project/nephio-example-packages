@@ -1,0 +1,23 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: example-repo
+spec:
+  annotations:
+    approval.nephio.org/policy: initial
+    approval.nephio.org/delay: 2m
+  upstream:
+    package: vlanindex
+    repo: nephio-example-packages
+    revision: v1
+  downstream:
+    package: example-repo
+    repo: mgmt
+  injectors:
+  - kind: WorkloadCluster
+    name: example
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/set-annotations:v0.1.4
+      configMap:
+        nephio.org/cluster-name: example
