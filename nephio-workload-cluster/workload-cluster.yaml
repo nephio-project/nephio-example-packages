@@ -6,3 +6,8 @@ spec:
   # Since injection only injects the spec, we need the name here as
   # well as in metadata.
   clusterName: example
+  cnis:
+  - macvlan
+  - ipvlan
+  - sriov
+  masterInterface: eth1
