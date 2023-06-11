@@ -9,7 +9,7 @@ spec:
   upstream:
     package: cluster-capi-kind
     repo: nephio-example-packages
-    revision: v4
+    revision: v5
   downstream:
     package: example-cluster
     repo: mgmt
