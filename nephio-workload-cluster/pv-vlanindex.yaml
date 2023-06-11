@@ -1,7 +1,7 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata:
-  name: example-repo
+  name: example-vlanindex
 spec:
   annotations:
     approval.nephio.org/policy: initial
@@ -11,7 +11,7 @@ spec:
     repo: nephio-example-packages
     revision: v1
   downstream:
-    package: example-repo
+    package: example-vlanindex
     repo: mgmt
   injectors:
   - kind: WorkloadCluster

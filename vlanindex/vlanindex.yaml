@@ -3,4 +3,4 @@ kind: VLANIndex
 metadata:
   name: example-cluster-name
   namespace: default
-spec:
+spec: {}
