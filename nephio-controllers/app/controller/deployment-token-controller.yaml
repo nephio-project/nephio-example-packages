@@ -3,13 +3,13 @@ kind: Deployment
 metadata:
   annotations: {}
   creationTimestamp: null
-  name: nephio-controller
+  name: token-controller
   namespace: nephio-system
 spec:
   replicas: 1
   selector:
     matchLabels:
-      fn.kptgen.dev/controller: nephio-controller
+      fn.kptgen.dev/controller: token-controller
   strategy: {}
   template:
     metadata:
@@ -21,8 +21,8 @@ spec:
         app.kubernetes.io/name: nephio
         app.kubernetes.io/part-of: nephio
         app.kubernetes.io/version: tbd
-        fn.kptgen.dev/controller: nephio-controller
-      name: nephio-controller
+        fn.kptgen.dev/controller: token-controller
+      name: token-controller
       namespace: nephio-system
     spec:
       containers:
@@ -69,22 +69,8 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: status.hostIP
-        - name: GIT_URL
-          value: http://172.18.0.200:3000
-        - name: ENABLE_APPROVAL
+        - name: ENABLE_TOKENS
           value: "true"
-        - name: ENABLE_REPOSITORIES
-          value: "true"
-        - name: ENABLE_BOOTSTRAPSECRETS
-          value: "true"
-        - name: ENABLE_BOOTSTRAPPACKAGES
-          value: "true"
-        - name: ENABLE_GENERICSPECIALIZER
-          value: "true"
-        - name: ENABLE_NETWORKS
-          value: "true"
-        - name: CLIENT_PROXY_ADDRESS
-          value: resource-backend-controller-grpc-svc.backend-system.svc.cluster.local:9999
         image: docker.io/nephio/nephio-operator:latest
         livenessProbe:
           httpGet:
