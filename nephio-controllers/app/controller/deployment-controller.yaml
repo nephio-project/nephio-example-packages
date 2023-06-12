@@ -81,9 +81,7 @@ spec:
           value: "true"
         - name: ENABLE_BOOTSTRAPPACKAGES
           value: "true"
-        - name: ENABLE_IPAMSPECIALIZER
-          value: "true"
-        - name: ENABLE_VLANSPECIALIZER
+        - name: ENABLE_GENERICSPECIALIZER
           value: "true"
         - name: CLIENT_PROXY_ADDRESS
           value: resource-backend-controller-grpc-svc.backend-system.svc.cluster.local:9999
