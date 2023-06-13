@@ -71,6 +71,8 @@ spec:
               fieldPath: status.hostIP
         - name: GIT_URL
           value: http://172.18.0.200:3000
+        - name: GIT_NAMESPACE
+          value: gitea
         - name: ENABLE_TOKENS
           value: "true"
         image: docker.io/nephio/nephio-operator:latest
