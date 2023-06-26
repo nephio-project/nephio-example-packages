@@ -1,8 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations: {}
-  creationTimestamp: null
   name: network-config-controller
   namespace: network-config
 spec:
@@ -10,17 +8,9 @@ spec:
   selector:
     matchLabels:
       fn.kptgen.dev/controller: network-config-controller
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app.kubernetes.io/component: tbd
-        app.kubernetes.io/instance: tbd
-        app.kubernetes.io/managed-by: kpt
-        app.kubernetes.io/name: network-config
-        app.kubernetes.io/part-of: network-config
-        app.kubernetes.io/version: tbd
         fn.kptgen.dev/controller: network-config-controller
       name: network-config-controller
       namespace: network-config
@@ -89,7 +79,7 @@ spec:
           value: "true"
         - name: ENABLE_GENERICSPECIALIZER
           value: "true"
-        image: europe-docker.pkg.dev/srlinux/eu.gcr.io/network-config-operator:latest
+        image: nephio/network-config-operator:latest
         livenessProbe:
           httpGet:
             path: /healthz
