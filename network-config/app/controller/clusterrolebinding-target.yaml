@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations: {}
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/component: tbd
+    app.kubernetes.io/instance: tbd
+    app.kubernetes.io/managed-by: kpt
+    app.kubernetes.io/name: network-config
+    app.kubernetes.io/part-of: network-config
+    app.kubernetes.io/version: tbd
+  name: network-config-controller-target-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: network-config-controller-target-role
+subjects:
+- kind: ServiceAccount
+  name: network-config-controller
+  namespace: network-config
