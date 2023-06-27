@@ -69,27 +69,11 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: status.hostIP
-        - name: GIT_URL
-          value: http://172.18.0.200:3000
-        - name: GIT_NAMESPACE
-          value: gitea
-        - name: ENABLE_REPOSITORIES
-          value: "true"
-        - name: ENABLE_TOKENS
-          value: "true"
-        - name: ENABLE_BOOTSTRAPSECRETS
-          value: "true"
-        - name: ENABLE_BOOTSTRAPPACKAGES
-          value: "true"
-        - name: ENABLE_NETWORKS
-          value: "true"
         - name: ENABLE_TARGETS
           value: "true"
         - name: ENABLE_NETWORKCONFIGS
           value: "true"
-        - name: ENABLE_GENERICSPECIALIZER
-          value: "true"
-        image: europe-docker.pkg.dev/srlinux/eu.gcr.io/network-config-operator:latest
+        image: docker.io/nephio/network-config-operator:latest
         livenessProbe:
           httpGet:
             path: /healthz
