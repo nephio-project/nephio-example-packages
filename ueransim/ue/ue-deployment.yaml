@@ -1,8 +1,7 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ueransim-ue
+  name: ueransimue-example
   labels:
     app.kubernetes.io/version: "v3.2.6"
     app: ueransim

@@ -1,0 +1,34 @@
+apiVersion: fn.kpt.dev/v1alpha1
+kind: ApplyReplacements
+metadata:
+  name: propagate-name
+  annotations:
+    config.kubernetes.io/local-config: "true"
+replacements:
+- source:
+    kind: WorkloadCluster
+    name: workload-cluster
+    fieldPath: spec.clusterName
+  targets:
+  - select:
+      kind: Deployment
+    fieldPaths:
+    - metadata.name
+    options:
+      delimiter: '-'
+      index: 1
+  - select:
+      kind: Interface
+    fieldPaths:
+    - metadata.annotations.[specializer.nephio.org/owner]
+    options:
+      delimiter: '-'
+      index: 1
+  - select:
+      kind: IPClaim
+      name: amf-regional-n2-ipv4
+    fieldPaths:
+    - metadata.annotations.[specializer.nephio.org/owner]
+    options:
+      delimiter: '-'
+      index: 1
