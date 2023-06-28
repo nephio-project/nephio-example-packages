@@ -16,6 +16,10 @@ spec:
   injectors:
   - kind: WorkloadCluster
     name: example
+  - group: inv.nephio.org
+    version: v1alpha1
+    kind: Node
+    name: leaf1
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/set-annotations:v0.1.4

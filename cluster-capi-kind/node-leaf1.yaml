@@ -1,0 +1,11 @@
+apiVersion: inv.nephio.org/v1alpha1
+kind: Node
+metadata:
+  name: leaf1
+  labels:
+    nephio.org/topology: nephio-sandbox
+  annotations:
+    config.kubernetes.io/local-config: "true"
+    kpt.dev/config-injection: required
+spec:
+  provider: example
