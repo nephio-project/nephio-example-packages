@@ -1,0 +1,17 @@
+apiVersion: ipam.resource.nephio.org/v1alpha1
+kind: IPClaim
+metadata:
+  name: amf-regional-n2-ipv4
+  annotations:
+    nephio.org/action: get
+    config.kubernetes.io/local-config: "true"
+    specializer.nephio.org/owner: apps/v1.Deployment.ueransimgnb-example
+    specializer.nephio.org/namespace: example
+spec:
+  kind: network
+  selector:
+    matchLabels:
+      nephio.org/address-family: ipv4
+      nephio.org/nsn-name: amf-regional-n2-ipv4
+  networkInstance:
+    name: vpc-ran

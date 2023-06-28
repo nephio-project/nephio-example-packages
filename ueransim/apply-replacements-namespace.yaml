@@ -1,0 +1,20 @@
+apiVersion: fn.kpt.dev/v1alpha1
+kind: ApplyReplacements
+metadata:
+  name: propagate-namespace
+  annotations:
+    config.kubernetes.io/local-config: "true"
+replacements:
+- source:
+    kind: ConfigMap
+    name: kptfile.kpt.dev
+    fieldPath: data.name
+  targets:
+  - select:
+      kind: Interface
+    fieldPaths:
+    - metadata.annotations.[specializer.nephio.org/namespace]
+  - select:
+      kind: IPClaim
+    fieldPaths:
+    - metadata.annotations.[specializer.nephio.org/namespace]

@@ -8,5 +8,14 @@ info:
   description: this package represents ueransim NFs, which are required to perfirm E2E conn testing
 pipeline:
   mutators:
+    - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+      configPath: apply-replacements-owner.yaml
+    - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+      configPath: apply-replacements-namespace.yaml
     - image: gcr.io/kpt-fn/set-namespace:v0.4.1
       configPath: package-context.yaml
+    - image: docker.io/nephio/ueransim-deploy-fn:latest
+    - image: docker.io/nephio/interface-fn:latest
+    - image: docker.io/nephio/nad-fn:latest
+    - image: docker.io/nephio/interface-fn:latest
+    - image: docker.io/nephio/ueransim-deploy-fn:latest
