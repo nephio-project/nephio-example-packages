@@ -1,19 +1,17 @@
 apiVersion: v1
-kind: Service
-metadata:
-  name: gnb-service
-  namespace: example
-  labels:
-    app: ueransim
-    app.kubernetes.io/version: v3.2.6
-    component: gnb
-spec:
-  type: ClusterIP
-  selector:
-    app: ueransim
-    component: gnb
-  ports:
-  - name: gnb-ue
-    protocol: UDP
-    port: 4997
-    targetPort: 4097
+ kind: Service
+ metadata:
+   name: gnb-service
+   labels:
+     app.kubernetes.io/version: "v3.2.6"
+     app: ueransim
+     component: gnb
+ spec:
+   type: ClusterIP
+   ports:
+     - name: gnb-ue
+       port: 4997
+       protocol: UDP
+   selector:
+     app: ueransim
+     component: gnb
