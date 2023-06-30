@@ -87,7 +87,7 @@ spec:
           value: "true"
         - name: CLIENT_PROXY_ADDRESS
           value: resource-backend-controller-grpc-svc.backend-system.svc.cluster.local:9999
-        image: docker.io/nephio/nephio-operator:latest
+        image: docker.io/nephio/nephio-operator:v1.0.0
         livenessProbe:
           httpGet:
             path: /healthz
