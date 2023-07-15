@@ -41,7 +41,7 @@ spec:
       containers:
         - name: porch-server
           # Update image to the image of your porch apiserver build.
-          image: nephio/porch-server:v1.0.0
+          image: gcr.io/kpt-dev/porch-server:v0.0.20
           imagePullPolicy: IfNotPresent
           resources:
             requests:
