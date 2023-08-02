@@ -14,8 +14,8 @@ pipeline:
       configPath: apply-replacements-namespace.yaml
     - image: gcr.io/kpt-fn/set-namespace:v0.4.1
       configPath: package-context.yaml
-    - image: docker.io/nephio/ueransim-deploy-fn:v1.0.1-beta.1
-    - image: docker.io/nephio/interface-fn:v1.0.1-beta.1
-    - image: docker.io/nephio/nad-fn:v1.0.1-beta.1
-    - image: docker.io/nephio/interface-fn:v1.0.1-beta.1
-    - image: docker.io/nephio/ueransim-deploy-fn:v1.0.1-beta.1
+    - image: docker.io/nephio/ueransim-deploy-fn:v1.0.1
+    - image: docker.io/nephio/interface-fn:v1.0.1
+    - image: docker.io/nephio/nad-fn:v1.0.1
+    - image: docker.io/nephio/interface-fn:v1.0.1
+    - image: docker.io/nephio/ueransim-deploy-fn:v1.0.1
