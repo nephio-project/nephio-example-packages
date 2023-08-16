@@ -1,0 +1,38 @@
+# Source: flux2/templates/cluster-reconciler-clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/instance: flux-system
+    app.kubernetes.io/version: "2.0.0"
+    app.kubernetes.io/part-of: flux
+  name: cluster-reconciler
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: helm-controller
+  namespace: flux-system
+---
+# Source: flux2/templates/crd-controller-clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: crd-controller
+  labels:
+    app.kubernetes.io/instance: flux-system
+    app.kubernetes.io/version: "2.0.0"
+    app.kubernetes.io/part-of: flux
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: crd-controller
+subjects:
+  - kind: ServiceAccount
+    name: helm-controller
+    namespace: flux-system
+  - kind: ServiceAccount
+    name: source-controller
+    namespace: flux-system
