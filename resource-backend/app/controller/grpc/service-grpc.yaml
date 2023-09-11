@@ -21,5 +21,3 @@ spec:
     targetPort: 9999
   selector:
     fn.kptgen.dev/grpc: resource-backend-controller
-status:
-  loadBalancer: {}
