@@ -55,3 +55,8 @@ fi
 "$CLUSTERCMD_PATH" generate provider --bootstrap kubeadm --write-to cluster-capi/cluster-api-bootstrap.yaml
 "$CLUSTERCMD_PATH" generate provider --control-plane kubeadm --write-to cluster-capi/cluster-api-control-plane.yaml
 "$CLUSTERCMD_PATH" generate provider --infrastructure docker --write-to cluster-capi-infrastructure-docker/cluster-api-infrastructure-docker.yaml
+
+# Multus
+multus_version="v$(get_github_latest_release k8snetworkplumbingwg/multus-cni)"
+curl -sL -o multus/multus-daemonset-thick.yml "https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/$multus_version/deployments/multus-daemonset-thick.yml"
+sed -i "s/snapshot-thick/$multus_version-thick/g" multus/multus-daemonset-thick.yml
