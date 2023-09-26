@@ -43,6 +43,7 @@ OS="$(uname | tr '[:upper:]' '[:lower:]')"
 ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
 CLUSTERCMD_PATH="$(pwd)/bin/clusterctl"
 export CLUSTER_TOPOLOGY=true
+export GOPROXY=off
 
 if [ ! -f "$CLUSTERCMD_PATH" ] || [ "$("$CLUSTERCMD_PATH" version -o short)" != "$CLUSTER_API_VERSION" ]; then
     mkdir -p "$(dirname "$CLUSTERCMD_PATH")"
