@@ -43,7 +43,7 @@ spec:
       containers:
         - name: porch-server
           # Update image to the image of your porch apiserver build.
-          image: gcr.io/kpt-dev/porch-server:v0.0.24
+          image: gcr.io/kpt-dev/porch-server:v0.0.27
           imagePullPolicy: IfNotPresent
           resources:
             requests:
@@ -71,7 +71,6 @@ spec:
             - --cache-directory=/cache
             - --cert-dir=/tmp/certs
             - --secure-port=4443
-
 ---
 apiVersion: v1
 kind: Service
