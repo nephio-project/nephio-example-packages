@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonic-vcsr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonic-vcsr
+  template:
+    metadata:
+      labels:
+        app: sonic-vcsr
+    spec:
+      containers:
+        - name: sonic-vcsr
+          image: "venkatmahalingam/vsr:0.1"
