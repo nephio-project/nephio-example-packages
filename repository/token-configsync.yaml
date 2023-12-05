@@ -4,5 +4,7 @@ metadata:
   name: example-site-name-access-token-configsync
   namespace: default
   annotations:
-    nephio.org/app: configsync
+    nephio.org/gitops: configsync
+    nephio.org/app: tobeinstalledonremotecluster
+    nephio.org/remote-namespace: config-management-system
 spec: {}
