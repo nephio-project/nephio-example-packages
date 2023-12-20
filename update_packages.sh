@@ -42,6 +42,8 @@ CLUSTER_API_VERSION="v$(get_github_latest_release kubernetes-sigs/cluster-api)"
 OS="$(uname | tr '[:upper:]' '[:lower:]')"
 ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
 CLUSTERCMD_PATH="$(pwd)/bin/clusterctl"
+export CLUSTER_TOPOLOGY=true
+export GOPROXY=off
 
 if [ ! -f "$CLUSTERCMD_PATH" ] || [ "$("$CLUSTERCMD_PATH" version -o short)" != "$CLUSTER_API_VERSION" ]; then
     mkdir -p "$(dirname "$CLUSTERCMD_PATH")"
@@ -52,4 +54,9 @@ fi
 "$CLUSTERCMD_PATH" generate provider --core cluster-api --write-to cluster-capi/cluster-api-core.yaml
 "$CLUSTERCMD_PATH" generate provider --bootstrap kubeadm --write-to cluster-capi/cluster-api-bootstrap.yaml
 "$CLUSTERCMD_PATH" generate provider --control-plane kubeadm --write-to cluster-capi/cluster-api-control-plane.yaml
-CLUSTER_TOPOLOGY=true "$CLUSTERCMD_PATH" generate provider --infrastructure docker --write-to cluster-capi-infrastructure-docker/cluster-api-infrastructure-docker.yaml
+"$CLUSTERCMD_PATH" generate provider --infrastructure docker --write-to cluster-capi-infrastructure-docker/cluster-api-infrastructure-docker.yaml
+
+# Multus
+multus_version="v$(get_github_latest_release k8snetworkplumbingwg/multus-cni)"
+curl -sL -o multus/multus-daemonset-thick.yml "https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/$multus_version/deployments/multus-daemonset-thick.yml"
+sed -i "s/snapshot-thick/$multus_version-thick/g" multus/multus-daemonset-thick.yml
