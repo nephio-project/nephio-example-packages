@@ -10,3 +10,4 @@ pipeline:
   mutators:
   - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
     configPath: apply-replacements.yaml
+  - image: docker.io/nephio/connect-fn:latest
