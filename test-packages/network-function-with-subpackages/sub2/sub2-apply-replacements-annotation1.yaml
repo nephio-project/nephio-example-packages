@@ -1,0 +1,16 @@
+apiVersion: fn.kpt.dev/v1alpha1
+kind: ApplyReplacements
+metadata:
+  name: replace-annotation1
+  annotations:
+    config.kubernetes.io/local-config: "true"
+replacements:
+- source:
+    kind: ConfigMap
+    name: sub2-cm-deployment
+    fieldPath: data.annotation1
+  targets:
+  - select:
+      kind: Deployment
+    fieldPaths:
+    - metadata.annotations.sub2-annotation1
