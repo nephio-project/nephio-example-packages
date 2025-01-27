@@ -1,9 +1,5 @@
-<!-- BEGINNING OF PRE-COMMIT-BLUEPRINT DOCS HOOK:TITLE -->
 # Google Cloud Storage Bucket blueprint
 
-
-<!-- END OF PRE-COMMIT-BLUEPRINT DOCS HOOK:TITLE -->
-<!-- BEGINNING OF PRE-COMMIT-BLUEPRINT DOCS HOOK:BODY -->
 A Google Cloud Storage bucket
 
 ## Setters
@@ -32,7 +28,7 @@ This package has no sub-packages.
 
 1.  Clone the package:
     ```shell
-    kpt pkg get https://github.com/GoogleCloudPlatform/blueprints.git/catalog/bucket@${VERSION}
+    kpt pkg get https://github.com/nephio-project/nephio-example-packages/test-blusprints/bucket@${VERSION}
     ```
     Replace `${VERSION}` with the desired repo branch or tag
     (for example, `main`).
@@ -66,5 +62,3 @@ This package has no sub-packages.
     ```shell
     kpt live status --output table --poll-until current
     ```
-
-<!-- END OF PRE-COMMIT-BLUEPRINT DOCS HOOK:BODY -->
